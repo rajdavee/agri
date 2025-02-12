@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { UserForm } from "./UserForm"
 
-const roles = ["all", "admin", "distributor", "sales"] as const
+const roles = ["all", "admin", "distributor", "sales","channel partner"] as const
 
 type User = {
   id: number

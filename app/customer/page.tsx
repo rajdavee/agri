@@ -72,68 +72,68 @@ type CheckoutFormData = {
 }
 
 const categories: Category[] = [
-  { id: 1, name: "Tractors & Equipment", description: "Agricultural tractors and attachments", image:"https://www.lanceragrico.com/wp-content/uploads/2024/09/MP-SERIES-TITLE-2024-min-min-2.png" },
-  { id: 2, name: "Irrigation Systems", description: "Water management and irrigation",  image:"https://www.lanceragrico.com/wp-content/uploads/2024/09/KM-Title-for-Catalogue-only-1-3.png" },
-  { id: 3, name: "Harvesting Machines", description: "Crop harvesting equipment",image:"https://www.lanceragrico.com/wp-content/uploads/2023/09/KX-Titel.82-1.jpg" },
-  { id: 4, name: "Seeding Equipment", description: "Planting and seeding machinery",image:"https://www.lanceragrico.com/wp-content/uploads/2023/09/Title-Image-3.jpg" },
+  { id: 1, name: "Rotary Tiller/ Rotavator", description: "Agricultural tractors and attachments", image:"https://www.lanceragrico.com/wp-content/uploads/2024/09/MP-SERIES-TITLE-2024-min-min-2.png" },
+  { id: 2, name: "Plough – Dhanush", description: "Water management and irrigation",  image:"https://www.lanceragrico.com/wp-content/uploads/2024/09/KM-Title-for-Catalogue-only-1-3.png" },
+  { id: 3, name: "Subsoiler/ Soil Renovator – Kenchua", description: "Crop harvesting equipment",image:"https://www.lanceragrico.com/wp-content/uploads/2023/09/KX-Titel.82-1.jpg" },
+  { id: 4, name: "Subsoiler/ Soil Renovator – Kenchua", description: "Planting and seeding machinery",image:"https://www.lanceragrico.com/wp-content/uploads/2023/09/Title-Image-3.jpg" },
 ]
 
 const products: Product[] = [
   {
     id: 1,
     categoryId: 1,
-    name: "HD-master-maximo Tractor",
+    name: "Maximo & Maximo Plus",
     description: "High-power 75HP agricultural tractor with advanced features",
-    imageUrl: "https://placehold.co/300x200/333/FFF?text=Tractor"
+    imageUrl: "https://www.lanceragrico.com/wp-content/uploads/2024/09/Untitled-design-2-1-300x300.jpg"
   },
   {
     id: 2,
     categoryId: 1,
     name: "DM Dhanus Cultivator",
     description: "Premium cultivator with adjustable tilling depth",
-    imageUrl: "https://placehold.co/300x200/444/FFF?text=Cultivator"
+    imageUrl: "https://www.lanceragrico.com/wp-content/uploads/2024/08/Add-a-little-bit-of-body-text.png"
   },
   {
     id: 3,
     categoryId: 2,
-    name: "SmartFlow Irrigation System",
+    name: "HS",
     description: "Automated drip irrigation with smart controls",
-    imageUrl: "https://placehold.co/300x200/555/FFF?text=Irrigation"
+    imageUrl: "https://www.lanceragrico.com/wp-content/uploads/2024/09/Title-Image-1.png"
   },
   {
     id: 4,
     categoryId: 2,
-    name: "AquaPro Sprinkler Setup",
+    name: "GM",
     description: "360-degree coverage sprinkler system",
-    imageUrl: "https://placehold.co/300x200/666/FFF?text=Sprinkler"
+    imageUrl: "https://www.lanceragrico.com/wp-content/uploads/2023/09/01-3.jpg"
   },
   {
     id: 5,
     categoryId: 3,
-    name: "CropMaster Harvester",
+    name: "Lancer Maize Sheller",
     description: "Multi-crop harvesting machine with minimal grain loss",
-    imageUrl: "https://placehold.co/300x200/777/FFF?text=Harvester"
+    imageUrl: "https://www.lanceragrico.com/wp-content/uploads/2023/09/01-1.jpgr"
   },
   {
     id: 6,
     categoryId: 3,
-    name: "GrainPro Thresher",
+    name: "KH SERIES",
     description: "High-capacity grain threshing system",
-    imageUrl: "https://placehold.co/300x200/888/FFF?text=Thresher"
+    imageUrl: "https://www.lanceragrico.com/wp-content/uploads/2023/09/01-1.jpg"
   },
   {
     id: 7,
     categoryId: 4,
-    name: "PrecisionSeed Planter",
+    name: "kl series",
     description: "GPS-guided precision seed planting system",
-    imageUrl: "https://placehold.co/300x200/999/FFF?text=Planter"
+    imageUrl: "https://www.lanceragrico.com/wp-content/uploads/2023/09/KL-thum.jpg"
   },
   {
     id: 8,
     categoryId: 4,
-    name: "SeedMaster Drill",
+    name: "DHANUSH LRP",
     description: "Multi-row seed drilling machine",
-    imageUrl: "https://placehold.co/300x200/AAA/FFF?text=Drill"
+    imageUrl: "https://www.lanceragrico.com/wp-content/uploads/2023/09/LRP-main.png"
   }
 ]
 
@@ -145,7 +145,7 @@ const parts: Part[] = [
     name: "Hydraulic Pump Assembly",
     description: "High-pressure hydraulic system for optimal performance",
     price: 599.99,
-    imageUrl: "https://placehold.co/200x200/333/FFF?text=Pump"
+    imageUrl: "https://www.lanceragrico.com/wp-content/uploads/2023/09/LRP-main.png"
   },
   {
     id: 2,
@@ -153,7 +153,7 @@ const parts: Part[] = [
     name: "Control Panel Unit",
     description: "Digital control system with LCD display",
     price: 299.99,
-    imageUrl: "https://placehold.co/200x200/444/FFF?text=Panel"
+    imageUrl: "https://www.lanceragrico.com/wp-content/uploads/2023/09/LRP-main.png"
   },
   // Add more parts for each product...
   {
@@ -162,7 +162,7 @@ const parts: Part[] = [
     name: "Transmission Belt Kit",
     description: "Heavy-duty belt set for power transmission",
     price: 149.99,
-    imageUrl: "https://placehold.co/200x200/555/FFF?text=Belt"
+    imageUrl: "https://www.lanceragrico.com/wp-content/uploads/2024/08/Add-a-little-bit-of-body-text.png"
   },
   // Parts for SmartFlow Irrigation (id: 3)
   {
@@ -171,7 +171,7 @@ const parts: Part[] = [
     name: "Flow Control Valve",
     description: "Precision water flow control system",
     price: 199.99,
-    imageUrl: "https://placehold.co/200x200/666/FFF?text=Valve"
+    imageUrl: "https://www.lanceragrico.com/wp-content/uploads/2024/08/Add-a-little-bit-of-body-text.png"
   },
   {
     id: 5,
@@ -179,7 +179,7 @@ const parts: Part[] = [
     name: "Smart Controller",
     description: "WiFi-enabled irrigation controller",
     price: 249.99,
-    imageUrl: "https://placehold.co/200x200/777/FFF?text=Controller"
+    imageUrl: "https://www.lanceragrico.com/wp-content/uploads/2024/08/Add-a-little-bit-of-body-text.png"
   },
   // Continue adding parts for other products...
 ]

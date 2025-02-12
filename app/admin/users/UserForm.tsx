@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
 
 const products = ["HD-master-maximo", "DM Dhanus", "Kenchua", "Product X", "Product Y"]
-const roles = ["admin", "distributor", "sales"] as const
+const roles = ["admin", "distributor", "sales","channel partner"] as const
 
 type User = {
   id: number
