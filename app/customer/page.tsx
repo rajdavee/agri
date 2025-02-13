@@ -579,7 +579,7 @@ export default function CustomerPage() {
           </div>
         )}
 
-        {/* Parts Grid */}
+        {/* Parts Grid - Replaced with Table */}
         {selectedProduct && (
           <div className="space-y-6">
             <div className="flex justify-between items-center">
@@ -597,37 +597,74 @@ export default function CustomerPage() {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {filteredParts
-                .filter(part =>
-                  part.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                  part.description.toLowerCase().includes(searchQuery.toLowerCase())
-                )
-                .map((part) => (
-                  <Card key={part.id} className="group hover:shadow-xl transition-all duration-300">
-                    <div className="aspect-square">
-                      <img 
-                        src={part.imageUrl} 
-                        alt={part.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <CardContent className="p-4">
-                      <h3 className="font-semibold">{part.name}</h3>
-                      <p className="text-sm text-gray-500 mb-2">{part.description}</p>
-                      <div className="flex justify-between items-center">
-                        <span className="font-bold">${part.price.toFixed(2)}</span>
-                        <Button 
-                          onClick={() => handleAddToCart(part)}
-                          size="sm"
-                        >
-                          Add to Cart
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-            </div>
+            <Card className="overflow-hidden">
+              <table className="w-full">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">Image</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">Part Details</th>
+                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-600">Price</th>
+                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-600">Action</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 bg-white">
+                  {filteredParts
+                    .filter(part =>
+                      part.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                      part.description.toLowerCase().includes(searchQuery.toLowerCase())
+                    )
+                    .map((part) => (
+                      <tr key={part.id} className="hover:bg-gray-50">
+                        <td className="px-6 py-4">
+                          <div className="h-24 w-24 rounded-lg overflow-hidden">
+                            <img 
+                              src={part.imageUrl} 
+                              alt={part.name}
+                              className="h-full w-full object-cover"
+                            />
+                          </div>
+                        </td>
+                        <td className="px-6 py-4">
+                          <div className="space-y-1">
+                            <h3 className="text-lg font-semibold text-gray-900">{part.name}</h3>
+                            <p className="text-sm text-gray-500">{part.description}</p>
+                            <div className="flex gap-2">
+                              {/* Add any additional part details/badges here */}
+                              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                In Stock
+                              </span>
+                              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                Original Part
+                              </span>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 text-right">
+                          <div className="text-lg font-bold text-gray-900">
+                            ${part.price.toFixed(2)}
+                          </div>
+                          <div className="text-sm text-gray-500">
+                            + Tax
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 text-right">
+                          <Button
+                            onClick={() => handleAddToCart(part)}
+                            className="bg-blue-600 hover:bg-blue-700"
+                          >
+                            Add to Cart
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+              {filteredParts.length === 0 && (
+                <div className="text-center py-12">
+                  <p className="text-gray-500">No parts found matching your search.</p>
+                </div>
+              )}
+            </Card>
           </div>
         )}
       </div>
@@ -673,7 +710,7 @@ export default function CustomerPage() {
 
       {/* Cart and Order History Dialog */}
       <Dialog open={isCartOpen} onOpenChange={setIsCartOpen}>
-        <DialogContent className={`sm:max-w-[600px] ${showCheckoutForm && "sm:max-w-[800px]"}`}>
+        <DialogContent className={`sm:max-w-[800px] ${showCheckoutForm && "sm:max-w-[800px]"}`}>
           <DialogHeader>
             <DialogTitle>
               {showCheckoutForm 
@@ -720,33 +757,92 @@ export default function CustomerPage() {
               </div>
             )
           ) : (
-            <div className="space-y-4">
-              {cart.map((item, index) => (
-                <div key={index} className="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
-                  <div>
-                    <h4 className="font-semibold">{item.name}</h4>
-                    <p className="text-sm text-gray-500">Invoice: {item.invoiceNumber}</p>
+            <div className="space-y-6">
+              {cart.length === 0 ? (
+                <div className="text-center py-8">
+                  <ShoppingCart className="h-12 w-12 mx-auto text-gray-400 mb-4" />
+                  <p className="text-gray-500">Your cart is empty</p>
+                </div>
+              ) : (
+                <>
+                  <div className="border rounded-lg overflow-hidden">
+                    <table className="w-full">
+                      <thead className="bg-gray-50">
+                        <tr>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-600">Item</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-600">Invoice No.</th>
+                          <th className="px-4 py-3 text-right text-sm font-semibold text-gray-600">Price</th>
+                          <th className="px-4 py-3 text-right text-sm font-semibold text-gray-600">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-200">
+                        {cart.map((item, index) => (
+                          <tr key={index} className="bg-white">
+                            <td className="px-4 py-4">
+                              <div className="flex items-center gap-3">
+                                <div className="h-12 w-12 rounded-md overflow-hidden">
+                                  <img 
+                                    src={item.imageUrl} 
+                                    alt={item.name}
+                                    className="h-full w-full object-cover"
+                                  />
+                                </div>
+                                <div>
+                                  <div className="font-medium text-gray-900">{item.name}</div>
+                                  <div className="text-sm text-gray-500">{item.description}</div>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="px-4 py-4 text-sm text-gray-500">
+                              {item.invoiceNumber}
+                            </td>
+                            <td className="px-4 py-4 text-right text-sm font-medium text-gray-900">
+                              ${item.price.toFixed(2)}
+                            </td>
+                            <td className="px-4 py-4 text-right">
+                              <Button
+                                variant="destructive"
+                                size="sm"
+                                onClick={() => {
+                                  const newCart = cart.filter((_, i) => i !== index);
+                                  setCart(newCart);
+                                }}
+                              >
+                                Remove
+                              </Button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
-                  <span className="font-bold">${item.price.toFixed(2)}</span>
-                </div>
-              ))}
-              <div className="border-t pt-4">
-                <div className="flex justify-between font-bold">
-                  <span>Total:</span>
-                  <span>${cartTotal.toFixed(2)}</span>
-                </div>
-              </div>
-              {cart.length > 0 && (
-                <Button 
-                  className="w-full"
-                  onClick={() => {
-                    localStorage.setItem('cart', JSON.stringify(cart))
-                    router.push('/customer/checkout')
-                    setIsCartOpen(false)
-                  }}
-                >
-                  Proceed to Checkout
-                </Button>
+
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
+                      <div className="text-lg font-semibold text-gray-900">Total Amount</div>
+                      <div className="text-xl font-bold text-gray-900">${cartTotal.toFixed(2)}</div>
+                    </div>
+
+                    <div className="flex gap-4 justify-end">
+                      <Button 
+                        variant="outline" 
+                        onClick={() => setIsCartOpen(false)}
+                      >
+                        Continue Shopping
+                      </Button>
+                      <Button 
+                        onClick={() => {
+                          localStorage.setItem('cart', JSON.stringify(cart));
+                          router.push('/customer/checkout');
+                          setIsCartOpen(false);
+                        }}
+                        className="px-8"
+                      >
+                        Checkout
+                      </Button>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           )}

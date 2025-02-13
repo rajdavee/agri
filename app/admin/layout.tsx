@@ -1,8 +1,36 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Users, Package, PenToolIcon as Tool, ShoppingCart } from "lucide-react"
+import { Users, Package, PenToolIcon as Tool, ShoppingCart, Bell } from "lucide-react"
 import type React from "react" // Import React
 import { Button } from "@/components/ui/button"
+
+const sidebarLinks = [
+  {
+    href: "/admin/users",
+    label: "Users",
+    icon: Users
+  },
+  {
+    href: "/admin/products",
+    label: "Products",
+    icon: Package
+  },
+  {
+    href: "/admin/parts",
+    label: "Parts",
+    icon: Tool
+  },
+  {
+    href: "/admin/part-orders",
+    label: "Part Orders",
+    icon: ShoppingCart
+  },
+  {
+    href: "/admin/notifications",
+    label: "Notifications",
+    icon: Bell
+  },
+]
 
 export default function AdminLayout({
   children,
@@ -24,30 +52,14 @@ export default function AdminLayout({
         </div>
         <nav className="p-4">
           <ul className="space-y-2">
-            <li>
-              <Link href="/admin/users" className="flex items-center p-2 text-gray-700 rounded hover:bg-gray-100">
-                <Users className="mr-2" size={20} />
-                Users
-              </Link>
-            </li>
-            <li>
-              <Link href="/admin/products" className="flex items-center p-2 text-gray-700 rounded hover:bg-gray-100">
-                <Package className="mr-2" size={20} />
-                Products
-              </Link>
-            </li>
-            <li>
-              <Link href="/admin/parts" className="flex items-center p-2 text-gray-700 rounded hover:bg-gray-100">
-                <Tool className="mr-2" size={20} />
-                Parts
-              </Link>
-            </li>
-            <li>
-              <Link href="/admin/part-orders" className="flex items-center p-2 text-gray-700 rounded hover:bg-gray-100">
-                <ShoppingCart className="mr-2" size={20} />
-                Part Orders
-              </Link>
-            </li>
+            {sidebarLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="flex items-center p-2 text-gray-700 rounded hover:bg-gray-100">
+                  <link.icon className="mr-2" size={20} />
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
         <div className="mt-auto p-4 border-t">
