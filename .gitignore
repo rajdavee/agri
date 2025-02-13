@@ -10,7 +10,6 @@ pnpm-debug.log*
 out/
 
 ### Env Files ###
-.env.local
 .env.development.local
 .env.test.local
 .env.production.local
@@ -29,3 +28,7 @@ coverage/
 
 ### TypeScript ###
 *.tsbuildinfo
+config.bat
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat

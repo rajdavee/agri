@@ -54,7 +54,7 @@ export function ProductForm({ product, onSave, onCancel }: ProductFormProps) {
     <form onSubmit={handleSubmit} className="space-y-4">
       <Input name="name" placeholder="Product Name" value={formData.name} onChange={handleChange} />
       <Input name="name" placeholder="Distributor price"  />
-      <Input name="name" placeholder="Customer Name"  />
+      <Input name="name" placeholder="Customer price"  />
       
       <Textarea
         name="description"
