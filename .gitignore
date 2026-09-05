@@ -20,7 +20,6 @@ logs/
 
 ### Miscellaneous ###
 .DS_Store
-.vscode/
 .idea/
 dist/
 .cache/
